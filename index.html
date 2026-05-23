@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no">
+  <title>Muzahidul Islam | Professional Portfolio</title>
+  <!-- Bootstrap 5 + Icons + Google Fonts -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <!-- jQuery & Animate.css -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+    body {
+      background: radial-gradient(circle at 10% 20%, #0a0f1f, #03060c);
+      color: #eef5ff;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+    /* glassmorphism + neubrutalism hi-tech vibe */
+    .glass-card {
+      background: rgba(15, 25, 45, 0.55);
+      backdrop-filter: blur(12px);
+      border-radius: 2rem;
+      border: 1px solid rgba(0, 255, 255, 0.25);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.4), 0 0 0 0.5px rgba(0,255,255,0.1);
+      transition: all 0.3s ease;
+    }
+    .glass-card:hover {
+      border-color: #0ff;
+      box-shadow: 0 20px 40px rgba(0, 255, 255, 0.2);
+      transform: translateY(-5px);
+    }
+    /* animated gradient border */
+    .animated-border {
+      position: relative;
+      background: rgba(10, 20, 35, 0.7);
+      border-radius: 2rem;
+    }
+    .animated-border::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 2rem;
+      padding: 2px;
+      background: linear-gradient(135deg, #0ff, #f0f, #ffaa00, #0ff);
+      background-size: 300% 300%;
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      animation: borderFlow 6s ease infinite;
+    }
+    @keyframes borderFlow {
+      0% { background-position: 0% 50%;}
+      50% { background-position: 100% 50%;}
+      100% { background-position: 0% 50%;}
+    }
+    /* profile image holder */
+    .profile-img-wrapper {
+      width: 130px;
+      height: 130px;
+      margin: 0 auto;
+      border-radius: 50%;
+      background: linear-gradient(145deg, #0ff, #2a2a72);
+      padding: 3px;
+      animation: pulseGlow 2s infinite;
+    }
+    .profile-img-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 2px solid rgba(255,255,255,0.2);
+    }
+    @keyframes pulseGlow {
+      0% { box-shadow: 0 0 0 0 rgba(0, 255, 255, 0.5);}
+      70% { box-shadow: 0 0 0 12px rgba(0, 255, 255, 0);}
+      100% { box-shadow: 0 0 0 0 rgba(0, 255, 255, 0);}
+    }
+    /* section titles */
+    .section-title {
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      background: linear-gradient(120deg, #fff, #0ff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      display: inline-block;
+      border-left: 5px solid #0ff;
+      padding-left: 15px;
+    }
+    /* skills badges */
+    .skill-badge {
+      background: rgba(0, 255, 255, 0.12);
+      border: 1px solid rgba(0, 255, 255, 0.4);
+      border-radius: 40px;
+      padding: 8px 18px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      backdrop-filter: blur(4px);
+      transition: 0.2s;
+      margin: 4px;
+      display: inline-block;
+    }
+    .skill-badge:hover {
+      background: #0ff;
+      color: #000;
+      transform: scale(1.03);
+      box-shadow: 0 0 12px #0ff;
+    }
+    /* timeline work */
+    .timeline-item {
+      border-left: 3px solid #0ff;
+      padding-left: 20px;
+      margin-bottom: 28px;
+      transition: 0.2s;
+    }
+    .timeline-item:hover {
+      transform: translateX(8px);
+    }
+    /* contact icons */
+    .contact-icon {
+      background: #0a1222;
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 28px;
+      border: 1px solid #0ff;
+      transition: 0.2s;
+    }
+    .contact-icon:hover {
+      background: #0ff;
+      color: #000;
+      transform: rotate(5deg) scale(1.1);
+    }
+    /* mobile app feel */
+    @media (max-width: 768px) {
+      body {
+        background: radial-gradient(circle at 20% 30%, #0b1120, #010101);
+      }
+      .glass-card {
+        border-radius: 1.8rem;
+        margin-bottom: 1.2rem;
+        padding: 1.4rem;
+      }
+      .container {
+        padding-left: 14px;
+        padding-right: 14px;
+      }
+      .profile-img-wrapper {
+        width: 100px;
+        height: 100px;
+      }
+      .section-title {
+        font-size: 1.02rem;
+        padding-left: 12px;
+        border-left-width: 4px;
+      }
+      .skill-badge {
+        padding: 6px 12px;
+        font-size: 0.72rem;
+      }
+      .contact-icon {
+        width: 42px;
+        height: 42px;
+      }
+      .contact-icon i {
+        font-size: 1rem;
+      }
+      .timeline-item {
+        padding-left: 16px;
+        margin-bottom: 22px;
+      }
+      .timeline-item:hover {
+        transform: none;
+      }
+      .footer-links {
+        border-radius: 1.8rem;
+        background: rgba(0,0,0,0.5);
+        backdrop-filter: blur(20px);
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.75rem;
+        padding: 1rem;
+      }
+      .footer-links .d-flex {
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        justify-content: center;
+      }
+      .btn-neon {
+        width: 100%;
+        padding: 10px 0;
+      }
+    }
+    /* custom scrollbar */
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #111a2a;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #0ff;
+      border-radius: 10px;
+    }
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+    .btn-neon {
+      background: transparent;
+      border: 1.5px solid #0ff;
+      color: #0ff;
+      border-radius: 40px;
+      padding: 8px 20px;
+      font-weight: 600;
+      transition: 0.25s;
+    }
+    .btn-neon:hover {
+      background: #0ff;
+      color: #000;
+      box-shadow: 0 0 18px #0ff;
+    }
+    .logo-text {
+      font-weight: 800;
+      background: linear-gradient(45deg, #fff, #0ff, #aaffff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- animated background particles (subtle) -->
+  <canvas id="particlesCanvas" style="position: fixed; top:0; left:0; width:100%; height:100%; pointer-events: none; z-index: 0;"></canvas>
+
+  <div class="container py-4" style="position: relative; z-index: 2;">
+    <!-- HEADER with logo & brand - hi-tech -->
+    <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap">
+      <div class="d-flex align-items-center gap-2">
+        <i class="fas fa-user-graduate fa-2x" style="color: #0ff;"></i>
+        <span class="fw-bold fs-4 logo-text">Muzahidul Islam</span>
+      </div>
+      <div class="mt-2 mt-sm-0">
+        <span class="badge bg-dark text-info border border-info px-3 py-2"><i class="fas fa-briefcase"></i> Professional Portfolio</span>
+      </div>
+    </div>
+
+    <!-- PROFILE SECTION: image + intro + contact -->
+    <div class="row g-4 mb-5">
+      <div class="col-md-5 col-lg-4">
+        <div class="glass-card p-4 text-center animate__animated animate__fadeInUp">
+          <div class="profile-img-wrapper mb-3" id="profileImgContainer">
+            <img id="profileImage" src="image/profile.png" alt="Profile">
+          </div>
+          <h2 class="fw-bold mt-2">Muzahidul Islam</h2>
+          <div class="d-flex flex-wrap justify-content-center gap-2 mt-2">
+            <span class="badge bg-primary bg-opacity-50 text-white px-3 py-2"><i class="fas fa-chalkboard-user"></i> English & CS Educator</span>
+            <span class="badge bg-info bg-opacity-30 text-white px-3 py-2"><i class="fas fa-award"></i> Curriculum Specialist</span>
+          </div>
+          <div class="mt-3 d-flex flex-wrap justify-content-center gap-3">
+            <div class="contact-icon"><a href="tel:+919365315161"><i class="fas fa-phone-alt fs-5"></i></a></div>
+            <div class="contact-icon"><a href="mailto:muzahidul.dev@gmail.com"><i class="fas fa-envelope fs-5"></i></a></div>
+            <div class="contact-icon"><a href="#"><i class="fab fa-linkedin-in fs-5"></i></a></div>
+            <div class="contact-icon"><a href="#"><i class="fab fa-github fs-5"></i></a></div>
+          </div>
+          <hr class="bg-info">
+          <p class="small"><i class="fas fa-map-marker-alt text-info"></i> Kharupetia, Darrang, Assam, 784115</p>
+          <p class="small"><i class="fas fa-globe"></i> www.mttm.com</p>
+        </div>
+      </div>
+
+      <!-- PROFILE SUMMARY & QUICK STATS -->
+      <div class="col-md-7 col-lg-8">
+        <div class="glass-card p-4 h-100 animate__animated animate__fadeInRight">
+          <h3 class="section-title mb-3"><i class="fas fa-user-astronaut me-2"></i> PROFILE</h3>
+          <p class="lead fs-6 lh-base">MCA-qualified educator with experience delivering English and computer science instruction across secondary and higher secondary levels. Skilled in curriculum development, academic writing, digital learning tools, and blended teaching strategies that support student achievement.</p>
+          <div class="row mt-3 g-3">
+            <div class="col-6">
+              <div class="bg-dark bg-opacity-50 p-2 rounded-3 text-center">
+                <i class="fas fa-award text-warning"></i> <strong>10+</strong> Certifications
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="bg-dark bg-opacity-50 p-2 rounded-3 text-center">
+                <i class="fas fa-chalkboard"></i> <strong>6+ Years</strong> Teaching Experience
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TWO COLUMN LAYOUT: SKILLS + LANGUAGES / AWARDS  -->
+    <div class="row g-4 mb-5">
+      <div class="col-md-6">
+        <div class="glass-card p-4 animate__animated animate__fadeInLeft">
+          <h3 class="section-title"><i class="fas fa-code-branch me-2"></i> Core Competencies</h3>
+          <div class="mt-3">
+            <div><strong>Teaching & Education:</strong> English grammar, literature analysis, academic writing, lesson planning, classroom management, blended learning, CBSE curriculum delivery, ICT integration.</div>
+            <div class="mt-3"><strong>Technical Expertise:</strong> HTML, CSS, JavaScript, PHP, Laravel, Angular, React, React Native, Java, Kotlin, Python, MySQL, Git, web development, performance optimization.</div>
+            <div class="mt-2"><strong>Tools & Platforms:</strong> VS Code, GitHub, virtual environments, data analysis, software engineering principles, AI-assisted productivity tools.</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="glass-card p-4 animate__animated animate__fadeInRight">
+          <h3 class="section-title"><i class="fas fa-language me-2"></i> Languages & Certifications</h3>
+          <div class="mt-2 mb-3"><span class="skill-badge">English (Fluent)</span> <span class="skill-badge">Assamese (Fluent)</span> <span class="skill-badge">Bengali (Fluent)</span> <span class="skill-badge">Hindi (Intermediate)</span></div>
+          <hr class="bg-info">
+          <h6 class="fw-bold"><i class="fas fa-medal"></i> Selected Certifications</h6>
+          <div class="d-flex flex-wrap gap-2 mt-2">
+            <span class="badge bg-dark text-info border border-info">PGDCA</span>
+            <span class="badge bg-dark text-info border border-info">Digital Marketing</span>
+            <span class="badge bg-dark text-info border border-info">Cyber Security</span>
+            <span class="badge bg-dark text-info border border-info">Ethical Hacking</span>
+            <span class="badge bg-dark text-info border border-info">EA Supervisor</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- WORK EXPERIENCE double face (English + CS roles) - UPDATED -->
+    <div class="row g-4 mb-5">
+      <div class="col-lg-6">
+        <div class="glass-card p-4 h-100">
+          <h3 class="section-title"><i class="fas fa-chalkboard-user me-2"></i> English Teaching Experience</h3>
+          <div class="mt-3">
+            <!-- NEW: D.R. Academy -->
+            <div class="timeline-item">
+              <h5>D.R. Academy <span class="badge bg-info text-dark">2025 - PRESENT</span></h5>
+              <p>English Teacher (Class 9 to 12): Delivering high-quality lessons in English literature and grammar, preparing students for board examinations, and implementing interactive teaching strategies to enhance language proficiency.</p>
+            </div>
+            <div class="timeline-item">
+              <h5>Shyamtila Vision Academy <span class="badge bg-info text-dark">2025</span></h5>
+              <p>English Teacher: Grammar & literature for Secondary/Higher Secondary, lesson plans, digital aids.</p>
+            </div>
+            <div class="timeline-item">
+              <h5>Lakhimpur Markaz Academy <span class="badge bg-info text-dark">2023 - 2025</span></h5>
+              <p>Led literature and communication courses while facilitating debate, public speaking, and comprehension development initiatives.</p>
+            </div>
+            <div class="timeline-item">
+              <h5>Creative Mission Academy <span class="badge bg-info text-dark">2019 - 2021</span></h5>
+              <p>Managed online English instruction, using digital resources and personalized lesson plans to increase engagement.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="glass-card p-4 h-100">
+          <h3 class="section-title"><i class="fas fa-laptop-code me-2"></i> Computer Science & Dev</h3>
+          <div class="mt-3">
+            <!-- NEW: Fidelity Investment -->
+            <div class="timeline-item">
+              <h5>Fidelity Investment India <span class="badge bg-info text-dark">2021 - 2025</span></h5>
+              <p>Software Engineer: Developed and maintained scalable web applications, collaborated on full-stack development projects, optimized database performance, and contributed to investment management tools using modern frameworks.</p>
+            </div>
+            <div class="timeline-item">
+              <h5>Lakhimpur Markaz Academy <span class="badge bg-info text-dark">2025 - PRESENT</span></h5>
+              <p>CS Teacher: CBSE curriculum, programming sessions, lab manuals, ICT projects.</p>
+            </div>
+            <div class="timeline-item">
+              <h5>Creative Mission Academy, Donbosco <span class="badge bg-info text-dark">2023 - 2025</span></h5>
+              <p>Delivered project-based learning and mentoring to improve student outcomes in programming and application design.</p>
+            </div>
+            <div class="timeline-item">
+              <h5>Eurofins IT Solution <span class="badge bg-info text-dark">2022 - 2024</span></h5>
+              <p>Developed responsive web experiences and integrated front-end solutions with back-end systems.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Skills badges strip dynamic + Education -->
+    <div class="row g-4 mb-5">
+      <div class="col-12">
+        <div class="glass-card p-4">
+          <h3 class="section-title"><i class="fas fa-cogs"></i> Technical Arsenal</h3>
+          <div class="d-flex flex-wrap justify-content-start mt-3" id="techBadges"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- EDUCATION + MISC -->
+    <div class="row g-4 mb-5">
+      <div class="col-md-8">
+        <div class="glass-card p-4">
+          <h3 class="section-title"><i class="fas fa-graduation-cap"></i> Education</h3>
+          <div class="row mt-3">
+            <div class="col-md-6"><i class="fas fa-check-circle text-info"></i> <strong>MA in English Literature</strong><br> IGNOU | 2025-2027 (Pursuing)</div>
+            <div class="col-md-6"><i class="fas fa-check-circle text-info"></i> <strong>Master of Computer Application</strong><br> Bangalore University | 2023-2025</div>
+            <div class="col-md-6 mt-2"><i class="fas fa-check-circle text-info"></i> <strong>Software Engineering with CIT</strong><br> WAP Institute | 2021-2023</div>
+            <div class="col-md-6 mt-2"><i class="fas fa-check-circle text-info"></i> <strong>Bachelor of Computer Application</strong><br> Manipal University Jaipur | 2019-2022</div>
+            <div class="col-md-6 mt-2"><i class="fas fa-check-circle text-info"></i> <strong>Bachelor of Arts in English</strong><br> Kharupetia College | 2015-2019</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="glass-card p-4 text-center">
+          <i class="fas fa-qrcode fa-3x text-info mb-2"></i>
+          <h5>Additional Credentials</h5>
+          <p class="small">Verified training in AI prompt engineering, cyber security, ethical hacking and digital systems.</p>
+          <a class="btn-neon btn-sm" href="resume/Blue%20and%20Gray%20Simple%20Professional%20CV%20Resume.pdf" target="_blank" download><i class="fas fa-download"></i> Download Resume</a>
+        </div>
+      </div>
+    </div>
+    
+    <!-- footer logos and contact again -->
+    <div class="footer-links glass-card p-3 mt-2 d-flex justify-content-between align-items-center flex-wrap">
+      <div class="d-flex gap-3">
+        <i class="fab fa-bootstrap fa-2x text-secondary"></i>
+        <i class="fab fa-js fa-2x text-warning"></i>
+        <i class="fab fa-html5 fa-2x text-danger"></i>
+        <i class="fab fa-css3-alt fa-2x text-primary"></i>
+        <i class="fab fa-jquery fa-2x text-info"></i>
+      </div>
+      <div class="mt-2 mt-sm-0">
+        <span>muzahidul.dev@gmail.com  |  +91 9365315161</span>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // animated particles background (hi-tech feel)
+    const canvas = document.getElementById('particlesCanvas');
+    const ctx = canvas.getContext('2d');
+    let width, height;
+    let particles = [];
+    function initParticles() {
+      width = window.innerWidth;
+      height = window.innerHeight;
+      canvas.width = width;
+      canvas.height = height;
+      particles = [];
+      let particleCount = Math.min(80, Math.floor(width * height / 12000));
+      for (let i = 0; i < particleCount; i++) {
+        particles.push({
+          x: Math.random() * width,
+          y: Math.random() * height,
+          radius: Math.random() * 2 + 1,
+          alpha: Math.random() * 0.5 + 0.2,
+          speedX: (Math.random() - 0.5) * 0.4,
+          speedY: (Math.random() - 0.5) * 0.2,
+        });
+      }
+    }
+    function animateParticles() {
+      ctx.clearRect(0, 0, width, height);
+      for (let p of particles) {
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(0, 200, 255, ${p.alpha})`;
+        ctx.fill();
+        p.x += p.speedX;
+        p.y += p.speedY;
+        if (p.x < 0) p.x = width;
+        if (p.x > width) p.x = 0;
+        if (p.y < 0) p.y = height;
+        if (p.y > height) p.y = 0;
+      }
+      requestAnimationFrame(animateParticles);
+    }
+    window.addEventListener('resize', () => {
+      initParticles();
+    });
+    initParticles();
+    animateParticles();
+
+    // dynamically add tech badges from resume-like list
+    const techStack = [
+      "HTML5/CSS3", "JavaScript/jQuery", "Bootstrap 5", "PHP/Laravel", "Angular/React", "Node.js", "MySQL", "Git/Github",
+      "AI Coding Agents", "Python (Basic)", "Java/Kotlin", "React Native", "SEO/Digital Mkt", "VMware", "Data Analysis"
+    ];
+    const badgeContainer = $('#techBadges');
+    techStack.forEach(tech => {
+      badgeContainer.append(`<span class="skill-badge"><i class="fas fa-microchip me-1"></i> ${tech}</span>`);
+    });
+
+    // jquery animations on scroll / reveal (simple)
+    $(window).on('load', function() {
+      $('.glass-card').each(function(index) {
+        setTimeout(() => {
+          $(this).addClass('animate__fadeInUp');
+          $(this).css('animation-duration', '0.6s');
+        }, index * 80);
+      });
+    });
+    // manually animate if any missing (all cards already have animate classes)
+    $('.glass-card').hover(function(){
+      $(this).css('transition','all 0.2s');
+    });
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  <style>
+    .animate__fadeInUp, .animate__fadeInLeft, .animate__fadeInRight {
+      animation-duration: 0.7s;
+    }
+    .glass-card {
+      transition: transform 0.25s ease, box-shadow 0.3s;
+    }
+  </style>
+</body>
+</html>
