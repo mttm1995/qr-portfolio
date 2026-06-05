@@ -1,516 +1,1438 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no">
-  <title>Muzahidul Islam | Professional Portfolio</title>
-  <!-- Bootstrap 5 + Icons + Google Fonts -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
-  <!-- jQuery & Animate.css -->
-  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Inter', sans-serif;
-    }
-    body {
-      background: radial-gradient(circle at 10% 20%, #0a0f1f, #03060c);
-      color: #eef5ff;
-      overflow-x: hidden;
-      scroll-behavior: smooth;
-    }
-    /* glassmorphism + neubrutalism hi-tech vibe */
-    .glass-card {
-      background: rgba(15, 25, 45, 0.55);
-      backdrop-filter: blur(12px);
-      border-radius: 2rem;
-      border: 1px solid rgba(0, 255, 255, 0.25);
-      box-shadow: 0 15px 35px rgba(0,0,0,0.4), 0 0 0 0.5px rgba(0,255,255,0.1);
-      transition: all 0.3s ease;
-    }
-    .glass-card:hover {
-      border-color: #0ff;
-      box-shadow: 0 20px 40px rgba(0, 255, 255, 0.2);
-      transform: translateY(-5px);
-    }
-    /* animated gradient border */
-    .animated-border {
-      position: relative;
-      background: rgba(10, 20, 35, 0.7);
-      border-radius: 2rem;
-    }
-    .animated-border::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      border-radius: 2rem;
-      padding: 2px;
-      background: linear-gradient(135deg, #0ff, #f0f, #ffaa00, #0ff);
-      background-size: 300% 300%;
-      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-      mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-      -webkit-mask-composite: xor;
-      mask-composite: exclude;
-      animation: borderFlow 6s ease infinite;
-    }
-    @keyframes borderFlow {
-      0% { background-position: 0% 50%;}
-      50% { background-position: 100% 50%;}
-      100% { background-position: 0% 50%;}
-    }
-    /* profile image holder */
-    .profile-img-wrapper {
-      width: 130px;
-      height: 130px;
-      margin: 0 auto;
-      border-radius: 50%;
-      background: linear-gradient(145deg, #0ff, #2a2a72);
-      padding: 3px;
-      animation: pulseGlow 2s infinite;
-    }
-    .profile-img-wrapper img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      border-radius: 50%;
-      border: 2px solid rgba(255,255,255,0.2);
-    }
-    @keyframes pulseGlow {
-      0% { box-shadow: 0 0 0 0 rgba(0, 255, 255, 0.5);}
-      70% { box-shadow: 0 0 0 12px rgba(0, 255, 255, 0);}
-      100% { box-shadow: 0 0 0 0 rgba(0, 255, 255, 0);}
-    }
-    /* section titles */
-    .section-title {
-      font-weight: 800;
-      letter-spacing: -0.5px;
-      background: linear-gradient(120deg, #fff, #0ff);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      display: inline-block;
-      border-left: 5px solid #0ff;
-      padding-left: 15px;
-    }
-    /* skills badges */
-    .skill-badge {
-      background: rgba(0, 255, 255, 0.12);
-      border: 1px solid rgba(0, 255, 255, 0.4);
-      border-radius: 40px;
-      padding: 8px 18px;
-      font-size: 0.8rem;
-      font-weight: 500;
-      backdrop-filter: blur(4px);
-      transition: 0.2s;
-      margin: 4px;
-      display: inline-block;
-    }
-    .skill-badge:hover {
-      background: #0ff;
-      color: #000;
-      transform: scale(1.03);
-      box-shadow: 0 0 12px #0ff;
-    }
-    /* timeline work */
-    .timeline-item {
-      border-left: 3px solid #0ff;
-      padding-left: 20px;
-      margin-bottom: 28px;
-      transition: 0.2s;
-    }
-    .timeline-item:hover {
-      transform: translateX(8px);
-    }
-    /* contact icons */
-    .contact-icon {
-      background: #0a1222;
-      width: 48px;
-      height: 48px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 28px;
-      border: 1px solid #0ff;
-      transition: 0.2s;
-    }
-    .contact-icon:hover {
-      background: #0ff;
-      color: #000;
-      transform: rotate(5deg) scale(1.1);
-    }
-    /* mobile app feel */
-    @media (max-width: 768px) {
-      body {
-        background: radial-gradient(circle at 20% 30%, #0b1120, #010101);
-      }
-      .glass-card {
-        border-radius: 1.8rem;
-        margin-bottom: 1.2rem;
-        padding: 1.4rem;
-      }
-      .container {
-        padding-left: 14px;
-        padding-right: 14px;
-      }
-      .profile-img-wrapper {
-        width: 100px;
-        height: 100px;
-      }
-      .section-title {
-        font-size: 1.02rem;
-        padding-left: 12px;
-        border-left-width: 4px;
-      }
-      .skill-badge {
-        padding: 6px 12px;
-        font-size: 0.72rem;
-      }
-      .contact-icon {
-        width: 42px;
-        height: 42px;
-      }
-      .contact-icon i {
-        font-size: 1rem;
-      }
-      .timeline-item {
-        padding-left: 16px;
-        margin-bottom: 22px;
-      }
-      .timeline-item:hover {
-        transform: none;
-      }
-      .footer-links {
-        border-radius: 1.8rem;
-        background: rgba(0,0,0,0.5);
-        backdrop-filter: blur(20px);
-        flex-direction: column;
-        align-items: stretch;
-        gap: 0.75rem;
-        padding: 1rem;
-      }
-      .footer-links .d-flex {
-        flex-wrap: wrap;
-        gap: 0.75rem;
-        justify-content: center;
-      }
-      .btn-neon {
-        width: 100%;
-        padding: 10px 0;
-      }
-    }
-    /* custom scrollbar */
-    ::-webkit-scrollbar {
-      width: 6px;
-    }
-    ::-webkit-scrollbar-track {
-      background: #111a2a;
-    }
-    ::-webkit-scrollbar-thumb {
-      background: #0ff;
-      border-radius: 10px;
-    }
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
-    .btn-neon {
-      background: transparent;
-      border: 1.5px solid #0ff;
-      color: #0ff;
-      border-radius: 40px;
-      padding: 8px 20px;
-      font-weight: 600;
-      transition: 0.25s;
-    }
-    .btn-neon:hover {
-      background: #0ff;
-      color: #000;
-      box-shadow: 0 0 18px #0ff;
-    }
-    .logo-text {
-      font-weight: 800;
-      background: linear-gradient(45deg, #fff, #0ff, #aaffff);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muzahidul Islam - English & CS Teacher | Tech Educator</title>
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #052b49;
+            --secondary-color: #1f3042;
+            --accent-teal: #20c9c1;
+            --accent-orange: #ff8b2d;
+            --light-bg: #f6f8fb;
+            --white: #ffffff;
+            --text-dark: #132034;
+            --text-soft: #526075;
+            --shadow: rgba(15, 38, 67, 0.12);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(rgba(42, 42, 43, 0.72), rgba(39, 41, 44, 0.72)), url("img/mttm.png") center/cover no-repeat fixed;
+            color: var(--text-dark);
+            line-height: 1.7;
+            min-height: 100vh;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .navbar {
+            background: rgba(5, 43, 73, 0.98);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            box-shadow: 0 18px 45px rgba(5, 43, 73, 0.18);
+        }
+
+        .navbar-brand {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            letter-spacing: 0.05em;
+            color: var(--accent-orange) !important;
+        }
+
+        .brand-logo {
+            width: 42px;
+            height: 42px;
+            object-fit: contain;
+            display: inline-block;
+        }
+
+        .footer-logo {
+            width: 42px;
+            height: 42px;
+            object-fit: contain;
+            display: inline-block;
+            margin-bottom: 0.65rem;
+        }
+
+        .about-portrait {
+            width: 100%;
+            max-width: 420px;
+            height: auto;
+            border-radius: 1.4rem;
+            box-shadow: 0 24px 60px rgba(15, 38, 67, 0.12);
+            border: 1px solid rgba(15, 38, 67, 0.08);
+            object-fit: cover;
+        }
+
+        .brand-badge {
+            width: 140px;
+            max-width: 100%;
+            border-radius: 1rem;
+            background: rgba(255, 255, 255, 0.08);
+            padding: 0.9rem;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.15);
+        }
+
+        .nav-link {
+            color: rgba(255, 255, 255, 0.85) !important;
+            font-weight: 500;
+        }
+
+        .nav-link.active,
+        .nav-link:hover {
+            color: var(--accent-teal) !important;
+        }
+
+        .hero-section {
+            position: relative;
+            padding: 100px 0 70px;
+            background: linear-gradient(135deg, #072b48 0%, #103e60 50%, #0f314b 100%);
+            color: var(--white);
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: radial-gradient(circle at top left, rgba(32, 201, 193, 0.16), transparent 25%),
+                              radial-gradient(circle at bottom right, rgba(255, 139, 45, 0.14), transparent 20%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(3rem, 4vw, 4.75rem);
+            font-weight: 800;
+            letter-spacing: -0.04em;
+            margin-bottom: 1rem;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.05rem, 1.3vw, 1.5rem);
+            color: rgba(255, 255, 255, 0.92);
+            margin-bottom: 1rem;
+        }
+
+        .hero-meta {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .hero-buttons {
+            gap: 1rem;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .btn-cta {
+            border-radius: 999px;
+            padding: 0.95rem 1.8rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .btn-primary-hero {
+            background: var(--accent-teal);
+            color: var(--white);
+        }
+
+        .btn-primary-hero:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 18px 35px rgba(32, 201, 193, 0.25);
+        }
+
+        .btn-outline-hero {
+            background: transparent;
+            color: var(--white);
+            border-color: rgba(255, 255, 255, 0.55);
+        }
+
+        .btn-outline-hero:hover {
+            color: var(--accent-orange);
+            border-color: var(--accent-orange);
+            transform: translateY(-2px);
+        }
+
+        .hero-card-grid {
+            margin-top: 3rem;
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 1rem;
+        }
+
+        .hero-card {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 1.2rem;
+            padding: 1.25rem;
+            text-align: center;
+            backdrop-filter: blur(8px);
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.14);
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .hero-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(32, 201, 193, 0.35);
+        }
+
+        .hero-card i {
+            color: var(--accent-orange);
+            font-size: 1.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .hero-card h5 {
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 0.45rem;
+        }
+
+        .hero-card p {
+            color: rgba(255, 255, 255, 0.76);
+            font-size: 0.95rem;
+        }
+
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.6rem;
+            text-align: center;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+            position: relative;
+        }
+
+        #about .section-title,
+        #about .section-description,
+        #skills .section-title,
+        #skills .section-description,
+        #education .section-title,
+        #education .section-description,
+        #languages .section-title,
+        #languages .section-description {
+            color: #fff;
+        }
+
+        .section-title::after {
+            content: '';
+            width: 90px;
+            height: 4px;
+            display: block;
+            background: linear-gradient(90deg, var(--accent-teal), var(--accent-orange));
+            margin: 1rem auto 0;
+            border-radius: 999px;
+        }
+
+        .section-description {
+            text-align: center;
+            max-width: 720px;
+            margin: 0 auto 3rem;
+            color: var(--text-soft);
+        }
+
+        .profile-card {
+            background: #fff;
+            border-radius: 1.4rem;
+            box-shadow: 0 20px 50px rgba(15, 38, 67, 0.08);
+            overflow: hidden;
+            border: 1px solid rgba(15, 38, 67, 0.08);
+        }
+
+        .profile-card .card-body {
+            padding: 2rem;
+        }
+
+        .profile-card h3 {
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .profile-card p {
+            color: var(--text-soft);
+            margin-bottom: 1.3rem;
+        }
+
+        .profile-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.65rem 0.95rem;
+            border-radius: 999px;
+            background: rgba(32, 201, 193, 0.12);
+            color: var(--primary-color);
+            margin: 0.35rem 0.35rem 0 0;
+            font-size: 0.95rem;
+            font-weight: 600;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 1.5rem;
+        }
+
+        .feature-card {
+            background: #fff;
+            border-radius: 1.1rem;
+            padding: 1.7rem;
+            border: 1px solid rgba(15, 38, 67, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(15, 38, 67, 0.08);
+        }
+
+        .feature-card i {
+            font-size: 1.45rem;
+            color: var(--accent-teal);
+            margin-bottom: 1rem;
+        }
+
+        .feature-card h5 {
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+            color: var(--primary-color);
+        }
+
+        .feature-card p {
+            color: var(--text-soft);
+            font-size: 0.95rem;
+        }
+
+        .services-banner {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 1.25rem;
+        }
+
+        .service-pill {
+            background: rgba(5, 43, 73, 0.05);
+            border-radius: 999px;
+            padding: 0.95rem 1rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: var(--primary-color);
+            font-weight: 600;
+            border: 1px solid rgba(5, 43, 73, 0.08);
+            word-wrap: break-word;
+            overflow-wrap: anywhere;
+            white-space: normal;
+        }
+
+        .skills-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+        }
+
+        .skills-row > .col-md-6 {
+            flex: 1 1 calc(50% - 1.5rem);
+            max-width: calc(50% - 1.5rem);
+        }
+
+        .skills-list {
+            background: #fff;
+            border-radius: 1.4rem;
+            border: 1px solid rgba(15, 38, 67, 0.08);
+            box-shadow: 0 18px 40px rgba(15, 38, 67, 0.06);
+            padding: 2rem;
+        }
+
+        .skills-list h4 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 1.2rem;
+            color: var(--primary-color);
+        }
+
+        .skills-list ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .skills-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.9rem;
+            margin-bottom: 1rem;
+            color: var(--text-soft);
+        }
+
+        .skills-list li i {
+            color: var(--accent-orange);
+            margin-top: 0.2rem;
+        }
+
+        .timeline {
+            position: relative;
+            margin-top: 2rem;
+            padding-left: 1rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 22px;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(180deg, var(--accent-teal), var(--accent-orange));
+            border-radius: 999px;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2.6rem;
+            padding-left: 3.5rem;
+        }
+
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 13px;
+            top: 0.25rem;
+            width: 18px;
+            height: 18px;
+            background: var(--white);
+            border: 4px solid var(--accent-teal);
+            border-radius: 50%;
+            box-shadow: 0 0 0 6px rgba(32, 201, 193, 0.12);
+        }
+
+        .timeline-card {
+            background: #fff;
+            border-radius: 1.2rem;
+            border: 1px solid rgba(15, 38, 67, 0.08);
+            padding: 1.6rem;
+            box-shadow: 0 18px 40px rgba(15, 38, 67, 0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .timeline-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .timeline-card h5 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-bottom: 0.55rem;
+            color: var(--primary-color);
+        }
+
+        .timeline-card .role-meta {
+            font-size: 0.92rem;
+            font-weight: 600;
+            color: var(--accent-orange);
+            margin-bottom: 0.9rem;
+        }
+
+        .timeline-card p {
+            color: var(--text-soft);
+            margin-bottom: 0;
+        }
+
+        .education-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 1.5rem;
+        }
+
+        .education-card {
+            background: #fff;
+            border-radius: 1.2rem;
+            padding: 1.75rem;
+            border: 1px solid rgba(15, 38, 67, 0.08);
+            transition: transform 0.3s ease;
+        }
+
+        .education-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 45px rgba(15, 38, 67, 0.06);
+        }
+
+        .education-card h5 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 0.7rem;
+            color: var(--primary-color);
+        }
+
+        .education-card span {
+            display: inline-flex;
+            margin-bottom: 0.75rem;
+            color: var(--accent-teal);
+            font-weight: 600;
+        }
+
+        .education-card p {
+            color: var(--text-soft);
+            margin-bottom: 0.3rem;
+            font-size: 0.95rem;
+        }
+
+        .badge-list {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 1rem;
+        }
+
+        .badge-item {
+            background: #fff;
+            border-radius: 1rem;
+            padding: 1rem 1.15rem;
+            border: 1px solid rgba(15, 38, 67, 0.08);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: var(--text-dark);
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .badge-item i {
+            color: var(--accent-orange);
+            min-width: 1.35rem;
+            text-align: center;
+        }
+
+        .language-list {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 1rem;
+        }
+
+        .language-item {
+            background: #fff;
+            border-radius: 1rem;
+            padding: 1rem;
+            text-align: center;
+            border: 1px solid rgba(15, 38, 67, 0.08);
+            box-shadow: 0 18px 35px rgba(15, 38, 67, 0.04);
+        }
+
+        .language-item h6 {
+            margin-bottom: 0.35rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .language-item span {
+            color: var(--text-soft);
+            font-size: 0.95rem;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .contact-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.06));
+            border-radius: 1.2rem;
+            padding: 1.85rem;
+            border: 1px solid rgba(255, 255, 255, 0.14);
+            color: var(--white);
+            box-shadow: 0 18px 40px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s ease;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .contact-card i {
+            font-size: 1.7rem;
+            color: var(--accent-teal);
+            margin-bottom: 1rem;
+        }
+
+        .contact-card h5 {
+            color: var(--white);
+            margin-bottom: 0.7rem;
+            font-weight: 700;
+        }
+
+        .contact-card p,
+        .contact-card a {
+            color: rgba(255, 255, 255, 0.88);
+        }
+
+        .contact-form-wrapper {
+            background: #fff;
+            border-radius: 1.6rem;
+            padding: 2rem;
+            box-shadow: 0 24px 60px rgba(15, 38, 67, 0.1);
+        }
+
+        .contact-form-wrapper h3 {
+            font-size: 1.7rem;
+            color: var(--primary-color);
+            margin-bottom: 1.1rem;
+        }
+
+        .form-control {
+            border-radius: 0.85rem;
+            border: 1px solid rgba(15, 38, 67, 0.14);
+            padding: 1rem 1.15rem;
+        }
+
+        .form-control:focus {
+            border-color: var(--accent-teal);
+            box-shadow: 0 0 0 0.2rem rgba(32, 201, 193, 0.16);
+        }
+
+        .btn-submit {
+            border-radius: 999px;
+            padding: 0.95rem 1.8rem;
+            background: linear-gradient(135deg, var(--accent-teal), var(--accent-orange));
+            border: none;
+            color: var(--white);
+            font-weight: 700;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 40px rgba(32, 201, 193, 0.25);
+        }
+
+        footer {
+            background: #071a2a;
+            color: rgba(255, 255, 255, 0.78);
+            padding: 2rem 0;
+        }
+
+        .footer-top {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 1.5rem;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-brand {
+            font-family: 'Playfair Display', serif;
+            color: #fff;
+            font-size: 1.55rem;
+            font-weight: 700;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: flex-end;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.78);
+            transition: color 0.2s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-teal);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 0.85rem;
+            margin-top: 1rem;
+            justify-content: center;
+            width: 100%;
+        }
+
+        .social-links a {
+            width: 44px;
+            height: 44px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.08);
+            color: var(--white);
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: var(--accent-teal);
+            color: #fff;
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.95rem;
+        }
+
+        .footer-bottom span {
+            color: var(--accent-orange);
+        }
+
+        @media (max-width: 992px) {
+            .hero-card-grid,
+            .services-banner,
+            .contact-grid,
+            .education-grid,
+            .badge-list,
+            .language-list,
+            .feature-grid,
+            .footer-top {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline {
+                padding-left: 0;
+            }
+
+            .timeline::before {
+                left: 10px;
+            }
+
+            .timeline-item {
+                padding-left: 2.8rem;
+            }
+
+            .footer-links {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding-bottom: 108px;
+            }
+
+            .navbar {
+                padding: 0.95rem 1rem;
+            }
+
+            .navbar-collapse {
+                background: rgba(5, 43, 73, 0.96);
+                border-radius: 1.2rem;
+                margin-top: 0.75rem;
+                padding: 1rem;
+            }
+
+            .nav-link {
+                padding: 0.75rem 0;
+                font-size: 1rem;
+            }
+
+            .hero-section {
+                padding: 80px 0 60px;
+                border-radius: 1.8rem;
+            }
+
+            .hero-title {
+                font-size: 2.8rem;
+            }
+
+            .hero-card-grid,
+            .feature-grid,
+            .services-banner,
+            .education-grid,
+            .badge-list,
+            .language-list,
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section {
+                padding: 60px 0;
+            }
+
+            .section .container {
+                background: rgba(7, 26, 42, 0.94);
+                border-radius: 1.8rem;
+                box-shadow: 0 28px 70px rgba(0, 0, 0, 0.30);
+                padding: 1.6rem 1rem;
+                color: #fff;
+                max-width: 100%;
+                width: 100%;
+            }
+
+            .section .section-description {
+                margin-bottom: 2rem;
+                color: rgba(255, 255, 255, 0.82);
+            }
+
+            .section-title,
+            .section .section-title {
+                color: #fff;
+            }
+
+            .service-pill {
+                font-size: 0.95rem;
+                width: 100%;
+                white-space: normal;
+                display: inline-flex;
+                align-items: flex-start;
+                color: #fff;
+                background: rgba(255, 255, 255, 0.08);
+                border-color: rgba(255, 255, 255, 0.14);
+                padding: 0.95rem 1rem;
+            }
+
+            .skills-row {
+                display: flex;
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+
+            .skills-row > .col-md-6 {
+                flex: 1 1 100%;
+                max-width: 100%;
+            }
+
+            .contact-form-wrapper,
+            .profile-card,
+            .skills-list,
+            .timeline-card,
+            .education-card,
+            .badge-item,
+            .language-item,
+            .contact-card {
+                border-radius: 1.8rem;
+            }
+
+            .contact-form-wrapper {
+                max-width: 100%;
+                padding: 1.8rem;
+            }
+
+            .mobile-bottom-nav {
+                display: flex;
+                position: fixed;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                justify-content: space-around;
+                align-items: center;
+                padding: 0.95rem 0;
+                background: rgba(5, 43, 73, 0.98);
+                border-top: 1px solid rgba(255, 255, 255, 0.12);
+                backdrop-filter: blur(16px);
+                z-index: 1100;
+            }
+
+            .mobile-bottom-nav a {
+                color: #fff;
+                display: inline-flex;
+                flex-direction: column;
+                align-items: center;
+                font-size: 0.82rem;
+                gap: 0.35rem;
+                text-decoration: none;
+                min-width: 64px;
+            }
+
+            .mobile-bottom-nav a i {
+                font-size: 1.15rem;
+            }
+
+            .mobile-bottom-nav a span {
+                display: block;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .navbar-brand {
+                font-size: 1.35rem;
+            }
+
+            .hero-title {
+                font-size: 2.4rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.05rem;
+            }
+
+            .hero-meta {
+                font-size: 0.95rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 0.9rem;
+            }
+
+            .btn-cta {
+                width: 100%;
+            }
+
+            .section .container {
+                padding: 1.2rem 0.9rem;
+                max-width: 100%;
+                width: 100%;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .section-description,
+            .section .section-description {
+                font-size: 0.98rem;
+            }
+
+            .feature-card,
+            .skills-list,
+            .timeline-card,
+            .education-card,
+            .contact-card,
+            .contact-form-wrapper,
+            .badge-item,
+            .language-item {
+                padding: 1.35rem;
+            }
+
+            .service-pill {
+                padding: 0.85rem 1rem;
+            }
+
+            .timeline-item {
+                padding-left: 2.5rem;
+            }
+
+            .timeline::before {
+                left: 8px;
+            }
+
+            .timeline-dot {
+                left: 2px;
+            }
+
+            .footer-top {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .footer-links {
+                justify-content: center;
+            }
+        }
+    </style>
 </head>
 <body>
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="#home">
+                <img src="logo/Muzahid%20The%20Tech%20Master.png" alt="Muzahid The Tech Master logo" class="brand-logo me-2">
+                <span>Muzahid The Tech Master</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link active" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#education">Education</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
-  <!-- animated background particles (subtle) -->
-  <canvas id="particlesCanvas" style="position: fixed; top:0; left:0; width:100%; height:100%; pointer-events: none; z-index: 0;"></canvas>
+    <section id="home" class="hero-section">
+        <div class="container">
+            <div class="row align-items-center justify-content-center">
+                <div class="col-lg-8 text-center hero-content">
+                    <p class="text-uppercase small fw-bold" style="color: rgba(255,255,255,0.7); letter-spacing: 0.2em;">Dual-expert Educator & Tech Mentor</p>
+                    <h1 class="hero-title">Muzahidul Islam</h1>
+                    <p class="hero-subtitle">English & Computer Science Teacher | Tech Educator | Software Engineer</p>
+                    <p class="hero-meta"><i class="fas fa-map-marker-alt me-2"></i>Kharupetia, Darrang, Assam</p>
+                    <div class="hero-buttons justify-content-center">
+                        <a href="#contact" class="btn btn-cta btn-primary-hero"><i class="fas fa-envelope me-2"></i>Contact Me</a>
+                        <a href="resume/resume.pdf" target="_blank" class="btn btn-cta btn-outline-hero" download><i class="fas fa-file-alt me-2"></i>View Resume</a>
+                    </div>
+                </div>
+            </div>
 
-  <div class="container py-4" style="position: relative; z-index: 2;">
-    <!-- HEADER with logo & brand - hi-tech -->
-    <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap">
-      <div class="d-flex align-items-center gap-2">
-        <i class="fas fa-user-graduate fa-2x" style="color: #0ff;"></i>
-        <span class="fw-bold fs-4 logo-text">Muzahidul Islam</span>
-      </div>
-      <div class="mt-2 mt-sm-0">
-        <span class="badge bg-dark text-info border border-info px-3 py-2"><i class="fas fa-briefcase"></i> Professional Portfolio</span>
-      </div>
+            <div class="hero-card-grid mt-5">
+                <div class="hero-card">
+                    <i class="fas fa-award"></i>
+                    <h5>Academic Excellence</h5>
+                    <p>MCA-qualified with MA in English Literature in progress, blending technical depth with language mastery.</p>
+                </div>
+                <div class="hero-card">
+                    <i class="fas fa-chalkboard-teacher"></i>
+                    <h5>Teaching Leadership</h5>
+                    <p>Experienced tutor for English and Computer Science across CBSE, B.A. English, B.Voc IT, and college aspirants.</p>
+                </div>
+                <div class="hero-card">
+                    <i class="fas fa-laptop-code"></i>
+                    <h5>Modern Learning</h5>
+                    <p>Project-based lab sessions, AI-assisted tools, and practical software concepts designed for today's learners.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="section">
+        <div class="container">
+            <div class="row gy-5 align-items-center">
+                <div class="col-lg-6">
+                    <h2 class="section-title">About Muzahidul</h2>
+                    <p class="section-description">Combining literature scholarship and tech fluency, I help students build confidence in language and software through clear, personalized instruction.</p>
+                    <div class="profile-card mb-4">
+                        <div class="card-body">
+                            <h3>Muzahid The Tech Master</h3>
+                            <p>My educational brand delivers English and Computer Science coaching with academic discipline and digital fluency. Students gain strong writing, analytical, and coding skills in every session.</p>
+                            <div class="profile-pill"><i class="fas fa-school"></i> English Tuition</div>
+                            <div class="profile-pill"><i class="fas fa-desktop"></i> CS Tuition</div>
+                            <div class="profile-pill"><i class="fas fa-rocket"></i> Project Learning</div>
+                            <div class="profile-pill"><i class="fas fa-globe"></i> Hybrid Delivery</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 text-center mb-4 mb-lg-0">
+                    <img src="img/profile.webp" alt="Muzahid profile picture" class="about-portrait">
+                    <div class="mt-4 d-flex justify-content-center">
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-5">
+                <div class="col-12">
+                    <div class="feature-grid">
+                        <div class="feature-card">
+                            <i class="fas fa-book-reader"></i>
+                            <h5>English Tuition</h5>
+                            <p>Guiding students in grammar, literature, academic composition, and exam preparation for grades 9-12 and B.A. English.</p>
+                        </div>
+                        <div class="feature-card">
+                            <i class="fas fa-code-branch"></i>
+                            <h5>Computer Science Tuition</h5>
+                            <p>CBSE and B.Voc IT classes with practical programming, database design, and software engineering fundamentals.</p>
+                        </div>
+                        <div class="feature-card">
+                            <i class="fas fa-laptop-code"></i>
+                            <h5>Programming Languages</h5>
+                            <p>HTML, CSS, JavaScript, jQuery, PHP, MySQL, Laravel, Bootstrap, Node.js, React, React Native, Angular, Python, Java, Kotlin.</p>
+                        </div>
+                        <div class="feature-card">
+                            <i class="fas fa-cogs"></i>
+                            <h5>Tools & OS</h5>
+                            <p>Jira, Github, Virtual Machines, Windows, Linux (Kali, Ubuntu, RedHat), AI coding agents, and digital productivity tools.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="section" style="background: #f8f9fb;">
+        <div class="container">
+            <h2 class="section-title">Business & Tuition Services</h2>
+            <p class="section-description">Muzahid The Tech Master offers targeted education services for learners who want both academic strength and technical skill.</p>
+            <div class="services-banner">
+                <div class="service-pill"><i class="fas fa-book"></i> English Tuition (Classes 9-12, B.A English Major)</div>
+                <div class="service-pill"><i class="fas fa-laptop-code"></i> Computer Science Tuition (Classes 9-12, B.Voc IT)</div>
+                <div class="service-pill"><i class="fas fa-keyboard"></i> Programming Languages: HTML, CSS, JS, jQuery, MySQL, PHP, Laravel, Bootstrap, Node.js, React, React Native, Angular, Python, Java, Kotlin</div>
+                <div class="service-pill"><i class="fas fa-cogs"></i> Tools & OS: Jira, Github, Virtual Machines, Windows, Linux (Kali, Ubuntu, RedHat)</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="section">
+        <div class="container">
+            <h2 class="section-title">Skills & Expertise</h2>
+            <p class="section-description">A powerful combination of instructional skill and technical knowledge for modern education.</p>
+            <div class="row skills-row">
+                <div class="col-md-6">
+                    <div class="skills-list">
+                        <h4>Teaching & Soft Skills</h4>
+                        <ul>
+                            <li><i class="fas fa-check-circle"></i> English Grammar & Literature</li>
+                            <li><i class="fas fa-check-circle"></i> Academic Writing & Essay Craft</li>
+                            <li><i class="fas fa-check-circle"></i> Lesson Planning & Assessment</li>
+                            <li><i class="fas fa-check-circle"></i> Classroom Management</li>
+                            <li><i class="fas fa-check-circle"></i> Online / Hybrid Teaching</li>
+                            <li><i class="fas fa-check-circle"></i> CBSE Curriculum Handling</li>
+                            <li><i class="fas fa-check-circle"></i> Project-Based Learning</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="skills-list">
+                        <h4>Technical & Programming Skills</h4>
+                        <ul>
+                            <li><i class="fas fa-check-circle"></i> Data Structures & DBMS</li>
+                            <li><i class="fas fa-check-circle"></i> Software Engineering</li>
+                            <li><i class="fas fa-check-circle"></i> HTML, CSS, JavaScript, jQuery</li>
+                            <li><i class="fas fa-check-circle"></i> MySQL, PHP, Laravel</li>
+                            <li><i class="fas fa-check-circle"></i> Angular, Node.js, React, React Native</li>
+                            <li><i class="fas fa-check-circle"></i> Java, Kotlin, Python (Basic)</li>
+                            <li><i class="fas fa-check-circle"></i> VS Code, Git, AI Coding Agents, SEO, Graphics Design, Data Analysis</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience" class="section" style="background: #f8f9fb;">
+        <div class="container">
+            <h2 class="section-title">Work Experience</h2>
+            <p class="section-description">A career timeline that reflects both academic teaching and software development expertise.</p>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <span class="timeline-dot"></span>
+                    <div class="timeline-card">
+                        <h5>D.R. Academy</h5>
+                        <div class="role-meta">English Teacher | 2026 - Present</div>
+                        <p>Delivering robust English lessons for senior secondary students, emphasizing literature, grammar, and writing mastery.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <span class="timeline-dot"></span>
+                    <div class="timeline-card">
+                        <h5>Shyamtila Vision Academy</h5>
+                        <div class="role-meta">English Teacher | 2025 - Present</div>
+                        <p>Guiding learners through literary analysis, composition, and communication skills for academic success.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <span class="timeline-dot"></span>
+                    <div class="timeline-card">
+                        <h5>Lakhimpur Markaz Academy</h5>
+                        <div class="role-meta">Computer Science Teacher | 2025 - Present</div>
+                        <p>Teaching CBSE computer science and programming fundamentals with practical lab-based activities.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <span class="timeline-dot"></span>
+                    <div class="timeline-card">
+                        <h5>Lakhimpur Markaz Academy</h5>
+                        <div class="role-meta">English Teacher | 2023 - 2025</div>
+                        <p>Managed English instruction for secondary students, focusing on effective reading, writing, and exam preparation.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <span class="timeline-dot"></span>
+                    <div class="timeline-card">
+                        <h5>Creative Mission Academy</h5>
+                        <div class="role-meta">Online English Tutor | 2019 - 2021</div>
+                        <p>Designed remote English lessons and study plans that helped students build confidence from home.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <span class="timeline-dot"></span>
+                    <div class="timeline-card">
+                        <h5>Creative Mission Academy</h5>
+                        <div class="role-meta">Computer Science Teacher | 2023 - 2025</div>
+                        <p>Delivered practical programming lessons with a focus on coding concepts and software logic for remote learners.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <span class="timeline-dot"></span>
+                    <div class="timeline-card">
+                        <h5>Fidelity Investment India</h5>
+                        <div class="role-meta">Software Engineer | 2021 - 2025</div>
+                        <p>Contributed to enterprise software projects while strengthening collaboration and engineering process skills.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <span class="timeline-dot"></span>
+                    <div class="timeline-card">
+                        <h5>Eurofins IT Solution</h5>
+                        <div class="role-meta">Website Developer | 2022 - 2024</div>
+                        <p>Created responsive websites and user-friendly interfaces for business applications and internal teams.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="education" class="section">
+        <div class="container">
+            <h2 class="section-title">Education</h2>
+            <p class="section-description">Academic training that supports both teaching excellence and technical mastery.</p>
+            <div class="education-grid">
+                <div class="education-card">
+                    <h5>Master of Arts (English Literature)</h5>
+                    <span>IGNOU</span>
+                    <p>2025 - 2027 (Pursuing)</p>
+                    <p>Advanced literary studies combined with teaching practice and academic research.</p>
+                </div>
+                <div class="education-card">
+                    <h5>Master of Computer Application</h5>
+                    <span>Bangalore University</span>
+                    <p>2023 - 2025</p>
+                    <p>Postgraduate education in software development, database systems, and application design.</p>
+                </div>
+                <div class="education-card">
+                    <h5>Software Engineering</h5>
+                    <span>CIT, WAP Institute</span>
+                    <p>2021 - 2023</p>
+                    <p>Hands-on software engineering training with real-world project experience.</p>
+                </div>
+                <div class="education-card">
+                    <h5>Bachelor of Computer Application</h5>
+                    <span>Manipal University Jaipur</span>
+                    <p>2019 - 2022</p>
+                    <p>Built a strong foundation in programming, systems, and application development.</p>
+                </div>
+                <div class="education-card">
+                    <h5>Bachelor of Arts in English</h5>
+                    <span>Kharupetia College</span>
+                    <p>2015 - 2018</p>
+                    <p>Studied English literature, critical writing, and effective communication.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="certifications" class="section" style="background: #f8f9fb;">
+        <div class="container">
+            <h2 class="section-title">Certifications & Awards</h2>
+            <p class="section-description">Industry certifications that reinforce teaching quality and technical ability.</p>
+            <div class="badge-list">
+                <div class="badge-item"><i class="fas fa-certificate"></i>PGDCA - CCERT</div>
+                <div class="badge-item"><i class="fas fa-certificate"></i>Digital Marketing - LinkedIn</div>
+                <div class="badge-item"><i class="fas fa-certificate"></i>Cyber Security - Skillup</div>
+                <div class="badge-item"><i class="fas fa-certificate"></i>Ethical Hacking - Programming Hub</div>
+                <div class="badge-item"><i class="fas fa-certificate"></i>EA Supervisor - NSEIT</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="languages" class="section">
+        <div class="container">
+            <h2 class="section-title">Languages</h2>
+            <p class="section-description">Strong multilingual communication supports teaching in regional and academic contexts.</p>
+            <div class="language-list">
+                <div class="language-item"><h6>English</h6><span>Fluent</span></div>
+                <div class="language-item"><h6>Assamese</h6><span>Fluent</span></div>
+                <div class="language-item"><h6>Bengali</h6><span>Fluent</span></div>
+                <div class="language-item"><h6>Hindi</h6><span>Intermediate</span></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section" style="background: linear-gradient(135deg, #072b48 0%, #0f3e5c 100%); color: #fff;">
+        <div class="container">
+            <h2 class="section-title" style="color: #fff;">Contact</h2>
+            <p class="section-description" style="color: rgba(255,255,255,0.8);">Ready to learn? Reach out for tuition, mentoring, or educational collaboration.</p>
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <i class="fas fa-phone"></i>
+                    <h5>Phone</h5>
+                    <p>+91 9365315161</p>
+                </div>
+                <div class="contact-card">
+                    <i class="fas fa-envelope"></i>
+                    <h5>Email</h5>
+                    <p>muzahidul.dev@gmail.com</p>
+                </div>
+                <div class="contact-card">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h5>Address</h5>
+                    <p>Kharupetia, Darrang, Assam, 784115</p>
+                </div>
+                <div class="contact-card">
+                    <i class="fas fa-globe"></i>
+                    <h5>Website</h5>
+                    <p>www.mttm.com</p>
+                </div>
+            </div>
+            <div class="contact-form-wrapper mx-auto" style="max-width: 760px;">
+                <h3>Send a Message</h3>
+                <form id="contactForm">
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label for="name" class="form-label">Full Name</label>
+                            <input type="text" class="form-control" id="name" placeholder="Your Name" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="email" class="form-label">Email Address</label>
+                            <input type="email" class="form-control" id="email" placeholder="Your Email" required>
+                        </div>
+                        <div class="col-12">
+                            <label for="subject" class="form-label">Subject</label>
+                            <input type="text" class="form-control" id="subject" placeholder="Message Subject" required>
+                        </div>
+                        <div class="col-12">
+                            <label for="message" class="form-label">Message</label>
+                            <textarea class="form-control" id="message" rows="5" placeholder="Write your message..." required></textarea>
+                        </div>
+                        <div class="col-12 text-end">
+                            <button type="submit" class="btn btn-submit"><i class="fas fa-paper-plane me-2"></i>Send Message</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-top">
+                <div>
+                    <div class="footer-brand">
+                        <img src="logo/Muzahid%20The%20Tech%20Master.png" alt="Muzahid The Tech Master logo" class="footer-logo">
+                        Muzahid The Tech Master
+                    </div>
+                    <p style="max-width: 520px; color: rgba(255,255,255,0.7);">A dual-expertise education brand blending English literature and computer science for students seeking modern learning.</p>
+                </div>
+                <div class="footer-links">
+                    <a href="#home">Home</a>
+                    <a href="#about">About</a>
+                    <a href="#contact">Contact</a>
+                    <a href="#education">Education</a>
+                </div>
+            </div>
+            <div class="social-links">
+                <a href="https://www.facebook.com/share/1QPV7qjVjB/" title="Facebook" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="www.linkedin.com/in/muzahidul-islam-2394323a7" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://github.com/mttm1995" title="GitHub"><i class="fab fa-github"></i></a>
+            </div>
+            <div class="footer-bottom mt-4">
+                <p>&copy; 2026 Muzahid The Tech Master. All rights reserved.</p>
+                <p>Designed with purpose, taught with passion.</p>
+            </div>
+        </div>
+    </footer>
+
+    <div class="mobile-bottom-nav d-md-none">
+        <a href="#home"><i class="fas fa-home"></i><span>Home</span></a>
+        <a href="#about"><i class="fas fa-user"></i><span>About</span></a>
+        <a href="#services"><i class="fas fa-briefcase"></i><span>Services</span></a>
+        <a href="#contact"><i class="fas fa-envelope"></i><span>Contact</span></a>
     </div>
 
-    <!-- PROFILE SECTION: image + intro + contact -->
-    <div class="row g-4 mb-5">
-      <div class="col-md-5 col-lg-4">
-        <div class="glass-card p-4 text-center animate__animated animate__fadeInUp">
-          <div class="profile-img-wrapper mb-3" id="profileImgContainer">
-            <img id="profileImage" src="image/profile.png" alt="Profile">
-          </div>
-          <h2 class="fw-bold mt-2">Muzahidul Islam</h2>
-          <div class="d-flex flex-wrap justify-content-center gap-2 mt-2">
-            <span class="badge bg-primary bg-opacity-50 text-white px-3 py-2"><i class="fas fa-chalkboard-user"></i> English & CS Educator</span>
-            <span class="badge bg-info bg-opacity-30 text-white px-3 py-2"><i class="fas fa-award"></i> Curriculum Specialist</span>
-          </div>
-          <div class="mt-3 d-flex flex-wrap justify-content-center gap-3">
-            <div class="contact-icon"><a href="tel:+919365315161"><i class="fas fa-phone-alt fs-5"></i></a></div>
-            <div class="contact-icon"><a href="mailto:muzahidul.dev@gmail.com"><i class="fas fa-envelope fs-5"></i></a></div>
-            <div class="contact-icon"><a href="https://www.linkedin.com/in/muzahidul-islam-2394323a7"><i class="fab fa-linkedin-in fs-5"></i></a></div>
-            <div class="contact-icon"><a href="https://github.com/muzahidthetechmaster"><i class="fab fa-github fs-5"></i></a></div>
-          </div>
-          <hr class="bg-info">
-          <p class="small"><i class="fas fa-map-marker-alt text-info"></i> Kharupetia, Darrang, Assam, 784115</p>
-          <p class="small"><i class="fas fa-globe"></i> www.mttm.com</p>
-        </div>
-      </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        $(function() {
+            var $window = $(window);
+            var $navbar = $('.navbar');
+            var $navLinks = $('.nav-link');
 
-      <!-- PROFILE SUMMARY & QUICK STATS -->
-      <div class="col-md-7 col-lg-8">
-        <div class="glass-card p-4 h-100 animate__animated animate__fadeInRight">
-          <h3 class="section-title mb-3"><i class="fas fa-user-astronaut me-2"></i> PROFILE</h3>
-          <p class="lead fs-6 lh-base">MCA-qualified educator with experience delivering English and computer science instruction across secondary and higher secondary levels. Skilled in curriculum development, academic writing, digital learning tools, and blended teaching strategies that support student achievement.</p>
-          <div class="row mt-3 g-3">
-            <div class="col-6">
-              <div class="bg-dark bg-opacity-50 p-2 rounded-3 text-center">
-                <i class="fas fa-award text-warning"></i> <strong>10+</strong> Certifications
-              </div>
-            </div>
-            <div class="col-6">
-              <div class="bg-dark bg-opacity-50 p-2 rounded-3 text-center">
-                <i class="fas fa-chalkboard"></i> <strong>6+ Years</strong> Teaching Experience
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+            function updateNavbar() {
+                if ($window.scrollTop() > 50) {
+                    $navbar.addClass('scrolled');
+                } else {
+                    $navbar.removeClass('scrolled');
+                }
 
-    <!-- TWO COLUMN LAYOUT: SKILLS + LANGUAGES / AWARDS  -->
-    <div class="row g-4 mb-5">
-      <div class="col-md-6">
-        <div class="glass-card p-4 animate__animated animate__fadeInLeft">
-          <h3 class="section-title"><i class="fas fa-code-branch me-2"></i> Core Competencies</h3>
-          <div class="mt-3">
-            <div><strong>Teaching & Education:</strong> English grammar, literature analysis, academic writing, lesson planning, classroom management, blended learning, CBSE curriculum delivery, ICT integration.</div>
-            <div class="mt-3"><strong>Technical Expertise:</strong> HTML, CSS, JavaScript, PHP, Laravel, Angular, React, React Native, Java, Kotlin, Python, MySQL, Git, web development, performance optimization.</div>
-            <div class="mt-2"><strong>Tools & Platforms:</strong> VS Code, GitHub, virtual environments, data analysis, software engineering principles, AI-assisted productivity tools.</div>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-6">
-        <div class="glass-card p-4 animate__animated animate__fadeInRight">
-          <h3 class="section-title"><i class="fas fa-language me-2"></i> Languages & Certifications</h3>
-          <div class="mt-2 mb-3"><span class="skill-badge">English (Fluent)</span> <span class="skill-badge">Assamese (Fluent)</span> <span class="skill-badge">Bengali (Fluent)</span> <span class="skill-badge">Hindi (Intermediate)</span></div>
-          <hr class="bg-info">
-          <h6 class="fw-bold"><i class="fas fa-medal"></i> Selected Certifications</h6>
-          <div class="d-flex flex-wrap gap-2 mt-2">
-            <span class="badge bg-dark text-info border border-info">PGDCA</span>
-            <span class="badge bg-dark text-info border border-info">Digital Marketing</span>
-            <span class="badge bg-dark text-info border border-info">Cyber Security</span>
-            <span class="badge bg-dark text-info border border-info">Ethical Hacking</span>
-            <span class="badge bg-dark text-info border border-info">EA Supervisor</span>
-          </div>
-        </div>
-      </div>
-    </div>
+                var scrollPos = $window.scrollTop();
+                $('section').each(function() {
+                    var top = $(this).offset().top - 120;
+                    var bottom = top + $(this).outerHeight();
+                    var id = $(this).attr('id');
+                    if (scrollPos >= top && scrollPos < bottom) {
+                        $navLinks.removeClass('active');
+                        $('.nav-link[href="#' + id + '"]').addClass('active');
+                    }
+                });
+            }
 
-    <!-- WORK EXPERIENCE double face (English + CS roles) - UPDATED -->
-    <div class="row g-4 mb-5">
-      <div class="col-lg-6">
-        <div class="glass-card p-4 h-100">
-          <h3 class="section-title"><i class="fas fa-chalkboard-user me-2"></i> English Teaching Experience</h3>
-          <div class="mt-3">
-            <!-- NEW: D.R. Academy -->
-            <div class="timeline-item">
-              <h5>D.R. Academy <span class="badge bg-info text-dark">2025 - PRESENT</span></h5>
-              <p>English Teacher (Class 9 to 12): Delivering high-quality lessons in English literature and grammar, preparing students for board examinations, and implementing interactive teaching strategies to enhance language proficiency.</p>
-            </div>
-            <div class="timeline-item">
-              <h5>Shyamtila Vision Academy <span class="badge bg-info text-dark">2025</span></h5>
-              <p>English Teacher: Grammar & literature for Secondary/Higher Secondary, lesson plans, digital aids.</p>
-            </div>
-            <div class="timeline-item">
-              <h5>Lakhimpur Markaz Academy <span class="badge bg-info text-dark">2023 - 2025</span></h5>
-              <p>Led literature and communication courses while facilitating debate, public speaking, and comprehension development initiatives.</p>
-            </div>
-            <div class="timeline-item">
-              <h5>Creative Mission Academy <span class="badge bg-info text-dark">2019 - 2021</span></h5>
-              <p>Managed online English instruction, using digital resources and personalized lesson plans to increase engagement.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-6">
-        <div class="glass-card p-4 h-100">
-          <h3 class="section-title"><i class="fas fa-laptop-code me-2"></i> Computer Science & Dev</h3>
-          <div class="mt-3">
-            <!-- NEW: Fidelity Investment -->
-            <div class="timeline-item">
-              <h5>Fidelity Investment India <span class="badge bg-info text-dark">2021 - 2025</span></h5>
-              <p>Software Engineer: Developed and maintained scalable web applications, collaborated on full-stack development projects, optimized database performance, and contributed to investment management tools using modern frameworks.</p>
-            </div>
-            <div class="timeline-item">
-              <h5>Lakhimpur Markaz Academy <span class="badge bg-info text-dark">2023 - 2025</span></h5>
-              <p>CS Teacher: CBSE curriculum, programming sessions, lab manuals, ICT projects.</p>
-            </div>
-            <div class="timeline-item">
-              <h5>Creative Mission Academy, Donbosco <span class="badge bg-info text-dark">2023 - 2025</span></h5>
-              <p>Delivered project-based learning and mentoring to improve student outcomes in programming and application design.</p>
-            </div>
-            <div class="timeline-item">
-              <h5>Eurofins IT Solution <span class="badge bg-info text-dark">2022 - 2024</span></h5>
-              <p>Developed responsive web experiences and integrated front-end solutions with back-end systems.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+            updateNavbar();
+            $window.on('scroll', updateNavbar);
 
-    <!-- Skills badges strip dynamic + Education -->
-    <div class="row g-4 mb-5">
-      <div class="col-12">
-        <div class="glass-card p-4">
-          <h3 class="section-title"><i class="fas fa-cogs"></i> Technical Arsenal</h3>
-          <div class="d-flex flex-wrap justify-content-start mt-3" id="techBadges"></div>
-        </div>
-      </div>
-    </div>
+            $('a[href^="#"]').on('click', function(e) {
+                e.preventDefault();
+                var target = $(this).attr('href');
+                if ($(target).length) {
+                    $('html, body').animate({ scrollTop: $(target).offset().top - 90 }, 700);
+                }
+                $('.navbar-collapse').collapse('hide');
+            });
 
-    <!-- EDUCATION + MISC -->
-    <div class="row g-4 mb-5">
-      <div class="col-md-8">
-        <div class="glass-card p-4">
-          <h3 class="section-title"><i class="fas fa-graduation-cap"></i> Education</h3>
-          <div class="row mt-3">
-            <div class="col-md-6"><i class="fas fa-check-circle text-info"></i> <strong>MA in English Literature</strong><br> IGNOU | 2025-2027 (Pursuing)</div>
-            <div class="col-md-6"><i class="fas fa-check-circle text-info"></i> <strong>Master of Computer Application</strong><br> Bangalore University | 2023-2025</div>
-            <div class="col-md-6 mt-2"><i class="fas fa-check-circle text-info"></i> <strong>Software Engineering with CIT</strong><br> WAP Institute | 2021-2023</div>
-            <div class="col-md-6 mt-2"><i class="fas fa-check-circle text-info"></i> <strong>Bachelor of Computer Application</strong><br> Manipal University Jaipur | 2019-2022</div>
-            <div class="col-md-6 mt-2"><i class="fas fa-check-circle text-info"></i> <strong>Bachelor of Arts in English</strong><br> Kharupetia College | 2015-2018</div>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="glass-card p-4 text-center">
-          <i class="fas fa-qrcode fa-3x text-info mb-2"></i>
-          <h5>Additional Credentials</h5>
-          <p class="small">Verified training in AI prompt engineering, cyber security, ethical hacking and digital systems.</p>
-          <a class="btn-neon btn-sm" href="resume/Blue%20and%20Gray%20Simple%20Professional%20CV%20Resume.pdf" target="_blank" download><i class="fas fa-download"></i> Download Resume</a>
-        </div>
-      </div>
-    </div>
-    
-    <!-- footer logos and contact again -->
-    <div class="footer-links glass-card p-3 mt-2 d-flex justify-content-between align-items-center flex-wrap">
-      <div class="d-flex gap-3">
-        <i class="fab fa-bootstrap fa-2x text-secondary"></i>
-        <i class="fab fa-js fa-2x text-warning"></i>
-        <i class="fab fa-html5 fa-2x text-danger"></i>
-        <i class="fab fa-css3-alt fa-2x text-primary"></i>
-        <i class="fab fa-jquery fa-2x text-info"></i>
-      </div>
-      <div class="mt-2 mt-sm-0">
-        <span>muzahidul.dev@gmail.com  |  +91 9365315161</span>
-      </div>
-    </div>
-  </div>
+            $('#contactForm').on('submit', function(e) {
+                e.preventDefault();
+                var name = $('#name').val().trim();
+                var email = $('#email').val().trim();
+                var subject = $('#subject').val().trim();
+                var message = $('#message').val().trim();
 
-  <script>
-    // animated particles background (hi-tech feel)
-    const canvas = document.getElementById('particlesCanvas');
-    const ctx = canvas.getContext('2d');
-    let width, height;
-    let particles = [];
-    function initParticles() {
-      width = window.innerWidth;
-      height = window.innerHeight;
-      canvas.width = width;
-      canvas.height = height;
-      particles = [];
-      let particleCount = Math.min(80, Math.floor(width * height / 12000));
-      for (let i = 0; i < particleCount; i++) {
-        particles.push({
-          x: Math.random() * width,
-          y: Math.random() * height,
-          radius: Math.random() * 2 + 1,
-          alpha: Math.random() * 0.5 + 0.2,
-          speedX: (Math.random() - 0.5) * 0.4,
-          speedY: (Math.random() - 0.5) * 0.2,
+                if (!name || !email || !subject || !message) {
+                    alert('Please complete all fields before sending your message.');
+                    return;
+                }
+
+                if (!/^\S+@\S+\.\S+$/.test(email)) {
+                    alert('Please enter a valid email address.');
+                    return;
+                }
+
+                alert('Message sent (demo). Thank you, ' + name + '!');
+                this.reset();
+            });
+
+            var observer = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                        $(entry.target).addClass('fade-in-up');
+                    }
+                });
+            }, {
+                threshold: 0.12
+            });
+
+            $('[class*="feature-card"], .timeline-card, .education-card, .badge-item, .language-item, .contact-card, .hero-card, .skills-list').each(function() {
+                observer.observe(this);
+            });
         });
-      }
-    }
-    function animateParticles() {
-      ctx.clearRect(0, 0, width, height);
-      for (let p of particles) {
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(0, 200, 255, ${p.alpha})`;
-        ctx.fill();
-        p.x += p.speedX;
-        p.y += p.speedY;
-        if (p.x < 0) p.x = width;
-        if (p.x > width) p.x = 0;
-        if (p.y < 0) p.y = height;
-        if (p.y > height) p.y = 0;
-      }
-      requestAnimationFrame(animateParticles);
-    }
-    window.addEventListener('resize', () => {
-      initParticles();
-    });
-    initParticles();
-    animateParticles();
-
-    // dynamically add tech badges from resume-like list
-    const techStack = [
-      "HTML5/CSS3", "JavaScript/jQuery", "Bootstrap 5", "PHP/Laravel", "Angular/React", "Node.js", "MySQL", "Git/Github",
-      "AI Coding Agents", "Python (Basic)", "Java/Kotlin", "React Native", "SEO/Digital Mkt", "VMware", "Data Analysis"
-    ];
-    const badgeContainer = $('#techBadges');
-    techStack.forEach(tech => {
-      badgeContainer.append(`<span class="skill-badge"><i class="fas fa-microchip me-1"></i> ${tech}</span>`);
-    });
-
-    // jquery animations on scroll / reveal (simple)
-    $(window).on('load', function() {
-      $('.glass-card').each(function(index) {
-        setTimeout(() => {
-          $(this).addClass('animate__fadeInUp');
-          $(this).css('animation-duration', '0.6s');
-        }, index * 80);
-      });
-    });
-    // manually animate if any missing (all cards already have animate classes)
-    $('.glass-card').hover(function(){
-      $(this).css('transition','all 0.2s');
-    });
-  </script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-  <style>
-    .animate__fadeInUp, .animate__fadeInLeft, .animate__fadeInRight {
-      animation-duration: 0.7s;
-    }
-    .glass-card {
-      transition: transform 0.25s ease, box-shadow 0.3s;
-    }
-  </style>
+    </script>
 </body>
 </html>
